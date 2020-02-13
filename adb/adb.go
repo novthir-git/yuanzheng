@@ -12,6 +12,7 @@ import (
 const (
 	appPkgName = ""
 	className  = ""
+	adbCmd  = "D:/tools/adb/adb.exe"
 )
 
 // adb链接模拟器
@@ -20,7 +21,11 @@ func Connect(ip string, port int) {
 
 	log.Printf("connect  host [%s]", host)
 
-	output, _ := exec.Command("adb", "connect", host).Output()
+	output, err := exec.Command(adbCmd, "connect", host).Output()
+	if err != nil {
+		log.Printf("connect error %s", err)
+
+	}
 
 	log.Printf("connect result %s", output)
 
@@ -42,9 +47,9 @@ func Disconnect(ip string, port int) {
 //由于需在手机和电脑上复制文件，必要时可增加延时或用下面的PathExists()判断文件是否存在，如：
 //time.Sleep(time.Duration(2) * time.Second)
 func ShellScreenCapPullRm() {
-	exec.Command("adb", "shell", "screencap", "-p", "/sdcard/screen.png").Run()
-	exec.Command("adb", "pull", "/sdcard/screen.png", "./images/screen").Run()
-	exec.Command("adb", "shell", "rm", "/sdcard/screen.png").Run()
+	exec.Command(adbCmd, "-s emulator-5554","shell", "screencap", "-p", "/sdcard/screen.png").Run()
+	exec.Command(adbCmd, "-s emulator-5554","pull", "/sdcard/screen.png", "./images/screen").Run()
+	exec.Command(adbCmd, "-s emulator-5554","shell", "rm", "/sdcard/screen.png").Run()
 }
 //func DeviceNames() {
 //	_output, _ := exec.Command("adb", "devices").Output()

@@ -33,7 +33,7 @@ func GetPoint(matImageFile string, matTemplateFile string) *image.Point {
 
 	fmt.Println(minConfidence, maxConfidence, minLoc, maxLoc)
 
-	//gocv.Normalize(matImage, &matTemplate, 0, 0, 32)
+	gocv.Normalize(matImage, &matTemplate, 0, 0, 32)
 
 	//gocv.Rectangle(&matImage, rect, color.RGBA{0, 0, 255, 0}, 1)
 	point := image.Point{
