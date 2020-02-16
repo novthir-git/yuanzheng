@@ -2,7 +2,8 @@ package main
 
 import (
 	"log"
-	"yuanzheng/adb"
+	"time"
+	"yuanzheng/task"
 
 	//"github.com/astaxie/beego"
 )
@@ -26,22 +27,27 @@ func init() {
 
 func main() {
 	//adb.Devices()
-	//fmt.Println("-------")
+	//img := adb.ShellScreenCapPullRm("emulator-5558")
+	//point,err :=adb.GetPoint(img, "images/template/richang/tiaoZhan.png")
+	//if err != nil {
+	//	println(point.Y)
+	//	println(point.X)
+	//}
+	//adb.TestMatchTemplate("images/template/33333.png", "images/template/2222.png")
+	////adb.AdbShellInputTap(point.X,point.Y)
+	//adb.ShellScreenCapPullRm("emulator-5558")
+	//go task.RiChangMain("emulator-5556")
+	go task.RiChangMain("emulator-5558")
+	//task.RiChangMain("emulator-5560")
+	//go task.RiChangMain("emulator-5562")
+	//go task.RiChangMain("emulator-5564")
+	//go task.RiChangMain("emulator-5566")
+	//go task.RiChangMain("emulator-5568")
 
-	//adb.Connect("127.0.0.1", 62001)
-	//adb.Connect("192.168.1.102", 5554)
+	//go task.RiChangMain("emulator-5556")
 
-	//adb.AdbShellInputKeyEvent2("3")
-	//adb.Disconnect("127.0.0.1", 7555)
-	//adb.ShellScreenCapPullRm()
-
-	//point := adb.GetPoint("20171120161302025.png","20171120161329769.jpeg")
-	point := adb.GetPoint("images/screen/screen.png", "images/template/222222.png")
-	if point != nil {
-		println(point.Y)
-		println(point.X)
-	}
-	adb.AdbShellInputTap(point.X,point.Y)
-	println("ttttt")
-
+	//task.Unlock("emulator-5558")
+	//task.Back("emulator-5558")
+	//task.SureClick("emulator-5558")
+	time.Sleep(10000 * time.Second)
 }
